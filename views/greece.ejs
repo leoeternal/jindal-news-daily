@@ -1,0 +1,132 @@
+<html>
+    <head>
+        <title>
+          NewsDaily  
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+            #photo{
+              width:600px;
+              height:450px;
+            }
+           
+        </style>
+    </head>
+    <body>
+       
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+  <a class="navbar-brand" href="/"><strong>getNEWS</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/gr/business">Business</a>
+          <a class="dropdown-item" href="/gr/entertainment">Entertainment</a>
+          <a class="dropdown-item" href="/gr/general">General</a>
+          <a class="dropdown-item" href="/gr/health">Health</a>
+          <a class="dropdown-item" href="/gr/science">Science</a>
+          <a class="dropdown-item" href="/gr/sports">Sports</a>
+          <a class="dropdown-item" href="/gr/technology">Technology</a>
+        </div>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Country
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/in">India</a>
+          <a class="dropdown-item" href="/ar">Argentina</a>
+          <a class="dropdown-item" href="/au">Australia</a>
+          <a class="dropdown-item" href="/br">Brazil</a>
+          <a class="dropdown-item" href="/bg">Bulgaria</a>
+          <a class="dropdown-item" href="/de">Germany</a>
+          <a class="dropdown-item" href="/gr">Greece</a>
+           <a class="dropdown-item" href="/id">Indonesia</a>
+          <a class="dropdown-item" href="/ie">Ireland</a>
+          <a class="dropdown-item" href="/il">Isarel</a>
+          <a class="dropdown-item" href="/mx">Mexico</a>
+          <a class="dropdown-item" href="/nz">New Zeland</a>
+          <a class="dropdown-item" href="/ng">Nigeria</a>
+          <a class="dropdown-item" href="/ru">Russia</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="/search" method="POST">
+      <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+
+<% getnews.body.articles.forEach(function(news)
+{ %>
+    <div class="container">
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title"><%= news.title %></h5>
+    <img id="photo" src="<%= news.urlToImage %>">
+    <p class="card-text"><%= news.description %></p>
+    <p><%= news.content %></p>
+    <a target="_blank" href="<%= news.url %>" class="btn btn-primary">Know More</a>
+  </div>
+  <div class="card-footer text-muted">
+    <strong><%= news.publishedAt %></strong>
+  </div>
+</div>
+      </div>
+      <br><br>
+      
+<% }) %>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+       <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+</html>
