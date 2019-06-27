@@ -22,7 +22,7 @@ app.get("/in",function(req,res)
         }
         else
         {
-            res.render("home.ejs",{getnews:getnews});
+            res.render("india.ejs",{getnews:getnews});
         }
     })
 });
@@ -96,8 +96,74 @@ app.get("/:id",function(req,res)
             }
         }
     })
+});
+app.get("/food/item",function(req,res)
+{
+    var url="https://newsapi.org/v2/everything?q=food&apiKey=4e54e27fba6a485197eca60dab5b9df8&pageSize=10";
+    request({url:url,json:true},function(err,getnews)
+    {
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.render("food.ejs",{getnews:getnews});
+        }
+    })
+});
+
+
+app.post("/food/item/dish",function(req, res) {
+    var dish=req.body.dish;
+    var url="https://api.edamam.com/search?q="+dish+"&app_id=1b911604&app_key=5fea85508aacb14effbd5f75818bc9a5";
+    request({url:url,json:true},function(err, getdish) {
+        if(err)
+        {
+            console.log(err);
+        }
+        else if(getdish.body.hits.length==0)
+        {
+            res.render("error.ejs");
+        }
+        else
+        {
+            res.render("fooddish.ejs",{getdish:getdish,dish:dish});
+        }
+    })
 })
 
+
+app.get("/weather/:id",function(req, res) {
+    var location=req.params.id;
+    var geocodeURL="https://api.mapbox.com/geocoding/v5/mapbox.places/"+encodeURIComponent(location)+".json?access_token=pk.eyJ1IjoibGVvbWVzc2kxMjMiLCJhIjoiY2p4M2V4b2FsMGJjaDN5b2EyaW9ndHFzNCJ9.ELBMrXNLxiI5Pn758e6vEg";
+    request({url:geocodeURL,json:true},function(err, latlon) {
+        if(err)
+    
+        {
+            console.log(err);
+        }
+        else
+        {
+            var latitude=latlon.body.features[0].center[1];
+            var longitude=latlon.body.features[0].center[0];
+            var placename=latlon.body.features[0].place_name;
+            var url="https://api.darksky.net/forecast/21c183c6a34c91a6384a579f8e203ab7/"+latitude+","+longitude+"?units=si"
+            request({url:url,json:true},function(err, getweather) {
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                 
+                    res.render("weather.ejs",{getweather:getweather,placename:placename});
+                    
+                }
+            })
+        }
+    })
+})
 
 app.get("/:id/:id2",function(req, res) {
     var id=req.params.id;
@@ -116,7 +182,7 @@ app.get("/:id/:id2",function(req, res) {
             }
             else if(id=="in")
             {
-                res.render("home.ejs",{getnews:getnews});
+                res.render("india.ejs",{getnews:getnews});
             }
             else if(id=="au")
             {
@@ -190,13 +256,59 @@ app.post("/search",function(req, res) {
         }
         else
         {
-            res.render("home.ejs",{getnews:getnews});
+            res.render("home.ejs",{getnews:getnews,search:search});
         }
     })
 })
 
+app.post("/weatherany/location",function(req,res)
+{
+       var location=req.body.search;
+    var geocodeURL="https://api.mapbox.com/geocoding/v5/mapbox.places/"+encodeURIComponent(location)+".json?access_token=pk.eyJ1IjoibGVvbWVzc2kxMjMiLCJhIjoiY2p4M2V4b2FsMGJjaDN5b2EyaW9ndHFzNCJ9.ELBMrXNLxiI5Pn758e6vEg";
+    request({url:geocodeURL,json:true},function(err, latlon) {
+        if(err)
+        {
+            console.log(err);
+        }
+        else if(latlon.body.features.length==0)
+        {
+            res.render("error.ejs");
+        }
+        else
+        {
+            var latitude=latlon.body.features[0].center[1];
+            var longitude=latlon.body.features[0].center[0];
+            var placename=latlon.body.features[0].place_name;
+            var url="https://api.darksky.net/forecast/21c183c6a34c91a6384a579f8e203ab7/"+latitude+","+longitude+"?units=si"
+            request({url:url,json:true},function(err, getweather) {
+                if(err)
+                {
+                    console.log(err);
+                }
+                else
+                {
+                    res.render("weather.ejs",{getweather:getweather,placename:placename});
+                    
+                }
+            })
+        }
+    })
+})
 
-
+app.get("/food",function(req, res) {
+    var url="https://newsapi.org/v2/everything?q=food&apiKey=4e54e27fba6a485197eca60dab5b9df8&language=en&pageSize=20";
+    request({url:url,json:true},function(err, getnews) {
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            console.log(getnews.body.articles[0].author);
+            res.render("food.ejs",{getnews:getnews});
+        }
+    })
+})
 
 app.listen(process.env.PORT,process.env.IP,function()
 {

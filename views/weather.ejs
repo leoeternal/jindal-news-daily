@@ -1,0 +1,222 @@
+<html>
+    <head>
+        <title>
+          NewsDaily  
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+           
+      
+           
+        </style>
+    </head>
+    <body>
+       
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+  <a class="navbar-brand" href="/"><strong>getNEWS</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+     
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/in/business">Business</a>
+          <a class="dropdown-item" href="/in/entertainment">Entertainment</a>
+          <a class="dropdown-item" href="/in/general">General</a>
+          <a class="dropdown-item" href="/in/health">Health</a>
+          <a class="dropdown-item" href="/in/science">Science</a>
+          <a class="dropdown-item" href="/in/sports">Sports</a>
+          <a class="dropdown-item" href="/in/technology">Technology</a>
+        </div>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Country
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/in">India</a>
+          <a class="dropdown-item" href="/ar">Argentina</a>
+          <a class="dropdown-item" href="/au">Australia</a>
+          <a class="dropdown-item" href="/br">Brazil</a>
+          <a class="dropdown-item" href="/bg">Bulgaria</a>
+          <a class="dropdown-item" href="/de">Germany</a>
+          <a class="dropdown-item" href="/gr">Greece</a>
+           <a class="dropdown-item" href="/id">Indonesia</a>
+          <a class="dropdown-item" href="/ie">Ireland</a>
+          <a class="dropdown-item" href="/il">Isarel</a>
+          <a class="dropdown-item" href="/mx">Mexico</a>
+          <a class="dropdown-item" href="/nz">New Zeland</a>
+          <a class="dropdown-item" href="/ng">Nigeria</a>
+          <a class="dropdown-item" href="/ru">Russia</a>
+        </div>
+      </li>
+     <a link href="#"><button class="btn btn-dark">Weather</button></a>
+      <a link href="/food/item"><button class="btn btn-dark">Food</button></a>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="/search" method="POST">
+      <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search any topic" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<br>
+<br>
+<form class="form-inline my-2 my-lg-0" action="/weatherany/location" method="POST">
+    <input class="form-control mr-sm-2" type="text" name="search" placeholder="search any location">
+    <button class="btn btn-danger my-2 my-sm-0">Search</button>
+</form>
+<br>
+<br>
+
+<br><br>
+<div class="card-columns">
+  <div class="card">
+    
+    <div class="card-body">
+      <h2 class="card-title"><font color="grey">Temperature</font></h2>
+      <p class="card-text"> <h5><%= getweather.body.currently.temperature %><sup> .c</sup></h5></p>
+    </div>
+  </div>
+  <div class="card p-3">
+    <blockquote class="blockquote mb-0 card-body">
+      <h3><%= getweather.body.currently.summary %></h3><br>
+      <h3><%= getweather.body.currently.icon %></h3><br>
+    </blockquote>
+  </div>
+  <div class="card">
+   
+    <div class="card-body">
+      <h2 class="card-title"><font color="grey">Wind</font></h2>
+      <p class="card-text"> <h5><%= getweather.body.currently.windSpeed %> mph</h5></p>
+    </div>
+  </div>
+  <div class="card bg-primary text-white text-center p-3">
+    <blockquote class="blockquote mb-0">
+      <h1><strong> <font color="black"><%= placename %></font></strong></h1>
+ 
+      <% if(placename=="India")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png">
+      <% } %>
+      <% if(placename=="Argentina")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/2000px-Flag_of_Argentina.svg.png">
+      <% } %>
+       <% if(placename=="Brazil")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/1280px-Flag_of_Brazil.svg.png">
+      <% } %>
+       <% if(placename=="Greece")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Greece.svg/2000px-Flag_of_Greece.svg.png">
+      <% } %>
+       <% if(placename=="Ireland")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/4/45/Flag_of_Ireland.svg">
+      <% } %>
+       <% if(placename=="Mexico")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/2000px-Flag_of_Mexico.svg.png">
+      <% } %>
+       <% if(placename=="Nigeria")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_Nigeria.svg/2000px-Flag_of_Nigeria.svg.png">
+      <% } %>
+       <% if(placename=="Australia")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/8/88/Flag_of_Australia_%28converted%29.svg">
+      <% } %>
+       <% if(placename=="Bulgaria")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Bulgaria.svg/2000px-Flag_of_Bulgaria.svg.png">
+      <% } %>
+       <% if(placename=="Germany")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png">
+      <% } %>
+       <% if(placename=="Indonesia")
+      { %>
+          <img width="100px" height="50px" src="https://cdn.britannica.com/48/1648-004-644EBE62.jpg">
+      <% } %>
+       <% if(placename=="Israel")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/1200px-Flag_of_Israel.svg.png">
+      <% } %>
+       <% if(placename=="New Zealand")
+      { %>
+          <img width="100px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/2000px-Flag_of_New_Zealand.svg.png">
+      <% } %>
+       <% if(placename=="Russia")
+      { %>
+          <img width="100px" height="50px" src="https://i0.wp.com/www.visionwear.com/wp-content/uploads/2011/09/russia.gif?fit=550%2C368&ssl=1">
+      <% } %>
+      </blockquote>
+  </div>
+  <div class="card text-left">
+    <div class="card-body">
+      <h2 class="card-title"><font color="grey">Pressure</font></h2>
+      <p class="card-text"><h5><%= getweather.body.currently.pressure %></h5></p>
+          </div>
+  </div>
+  <div class="card p-3 text-left">
+    <blockquote class="blockquote mb-0">
+        <p><h2><font color="grey"> Humidity </font></h2></p>
+         <p class="card-text"> <h5><%= getweather.body.currently.humidity %> %</h5></p>
+      <blockquote>
+  </div>
+  
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title"><font color="grey">Precipitation</font></h2>
+      <p class="card-text"> <h5><%= getweather.body.currently.precipProbability %> %</h5></p>
+    </div>
+  </div>
+  
+</div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+        
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+       <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+       <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       <script>
+     
+        </script>
+        
+        
+    </body>
+</html>
