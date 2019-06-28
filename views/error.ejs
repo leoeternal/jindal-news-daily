@@ -1,3 +1,135 @@
-<h1>Search Something valid</h1>
+<html>
+    <head>
+        <title>
+          NewsDaily  
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
+         #list{
+             list-style:none;
+             
+         }
+         .set{
+             margin:10px;
+             }
+             .set a{
+                 color:black;
+                 text-transform:uppercase;
+                 font-weight:200;
+             }
+           
+        </style>
+    </head>
+    <body>
+       
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+  <a class="navbar-brand" href="/"><strong>getNEWS</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<a href="/">Go back</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+     
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/in/business">Business</a>
+          <a class="dropdown-item" href="/in/entertainment">Entertainment</a>
+          <a class="dropdown-item" href="/in/general">General</a>
+          <a class="dropdown-item" href="/in/health">Health</a>
+          <a class="dropdown-item" href="/in/science">Science</a>
+          <a class="dropdown-item" href="/in/sports">Sports</a>
+          <a class="dropdown-item" href="/in/technology">Technology</a>
+        </div>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Country
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/in">India</a>
+          <a class="dropdown-item" href="/ar">Argentina</a>
+          <a class="dropdown-item" href="/au">Australia</a>
+          <a class="dropdown-item" href="/br">Brazil</a>
+          <a class="dropdown-item" href="/bg">Bulgaria</a>
+          <a class="dropdown-item" href="/de">Germany</a>
+          <a class="dropdown-item" href="/gr">Greece</a>
+           <a class="dropdown-item" href="/id">Indonesia</a>
+          <a class="dropdown-item" href="/ie">Ireland</a>
+          <a class="dropdown-item" href="/il">Isarel</a>
+          <a class="dropdown-item" href="/mx">Mexico</a>
+          <a class="dropdown-item" href="/nz">New Zeland</a>
+          <a class="dropdown-item" href="/ng">Nigeria</a>
+          <a class="dropdown-item" href="/ru">Russia</a>
+        </div>
+      </li>
+     <a link href="/weather/india"><button class="btn btn-dark">Weather</button></a> 
+    &nbsp &nbsp <a link href="/food/item"><button class="btn btn-dark">Food</button></a>
+      
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="/search" method="POST">
+      <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search any topic" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<br>
+<br>
+
+        <div class="container">
+        <p>Sorry, there are no results for <strong><%= search %></strong></p><br>
+        <p>Suggestions</p>
+        <br>
+        <ul>
+            <li>Make Sure that all words are spelled correctly.</li>
+            <li>Try different keywords.</li>
+            <li>Try more general Keywords.</li>
+        </ul>
+        <br><br>
+        </div>
+        <hr>
+        <br>
+        <div class="container">
+            <h1>Explore the <strong>getNEWS</strong></h1><br>
+            <ul id="list">
+                <li class="set"><a href="#">News</a></li>
+                <li class="set"><a href="#">Weather</a></li>
+                <li class="set"><a href="#">Food</a></li>
+                
+            </ul>
+             <hr>
+        </div>
+        <br>
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+       <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+       <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+</html>

@@ -9,7 +9,25 @@
                 width:800px;
                 margin-left:250px;
             }
-            
+            #footer{
+                background:grey;
+            }
+                #list{
+             list-style:none;
+             
+         }
+         .set{
+             margin:10px;
+             }
+             .set a{
+                 color:white;
+                 text-transform:uppercase;
+                 font-weight:200;
+             }
+           
+           
+           
+           
              @media screen and (max-width:1370px){
                
               #formmake{
@@ -32,6 +50,7 @@
                 transform:translateX(-250px);
               }
             }
+            
         </style>
     </head>
     <body>
@@ -94,61 +113,73 @@
 <br>
 <br>
      
-
-<nav class="navbar navbar-dark bg-light">
-  <form class="form-inline" action="/food/item/dish" method="POST">
-    <input id="formmake" class="form-control mr-sm-2" type="search" name="dish" placeholder="Discover more than 10,000 fantastic recipes on getNEWS" aria-label="Search">
+        <h1>Search more for nutritional advices and recipes</h1>
+        <br>
+        <nav class="navbar">
+  <form class="form-inline" action="/food/item/nutrition" method="POST">
+    <input id="formmake" class="form-control mr-sm-2" type="search" name="nutrition" placeholder="Food item" aria-label="Search">
     <button id="formbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav><br>
-
-
-<div class="container">
-  <h5>About <%= getdish.body.hits.length %> results for : <font color="red"><%= dish %></font></h5><br>
-
-    
-<div class="row">
-    
-<% getdish.body.hits.forEach(function(dish)
-{ %>
-    <div class="col-lg-4 col-sm-12 col-md-6"> 
-            <div id="box" class="card" style="width: 18rem;">
-  
+        <div class="container">
+            <h4>About <%= diet.body.hits.length %> results</h4>
+            <br>
+            <div class="row">
+             <% diet.body.hits.forEach(function(nutrition)
+             { %>
+                 <div class="col-lg-4">
+                      <div class="card mb-3">
+  <img id="photo" src="<%= nutrition.recipe.image %>" class="card-img-top" alt="...">
   <div class="card-body">
-      <img src="<%= dish.recipe.image %>" class="card-img-top" alt="..."><br><br>
-    <h5 class="card-title"><%= dish.recipe.label %></h5>
-    <p class="card-text"> <% dish.recipe.ingredientLines.forEach(function(line){
-    %>
-     <strong>-</strong> <%= line %><br>
-    <% }) %>
-    </p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><font color="red"><%= dish.recipe.healthLabels[0] %></font></li>
-    <li class="list-group-item"><font color="red"><%= dish.recipe.healthLabels[1] %></font></li>
-    <li class="list-group-item"><font color="red"><%= dish.recipe.healthLabels[2] %></font></li>
-  </ul>
-  <div class="card-body">
-    <a href="<%= dish.recipe.shareAs %>" class="card-link"><font size="5px">Explore..</font></a>
-  </div>
-</div>
-         </div>
-<% }) %>
+    <h5 class="card-title"><%= nutrition.recipe.label %></h5>
+     <p><%= nutrition.recipe.healthLabels[nutrition.recipe.healthLabels.length-1] %></p>
+        <p><strong>Calories - </strong><%= nutrition.recipe.calories %></p>
+        <p><strong>Fat - </strong><%= nutrition.recipe.totalNutrients.FAT.quantity %> <%=nutrition.recipe.totalNutrients.FAT.unit %></p>
+        <p><strong>Carbohydrate - </strong><%= nutrition.recipe.totalNutrients.CHOCDF.quantity %> <%=nutrition.recipe.totalNutrients.CHOCDF.unit %></p>
+        <p><strong>Protein - </strong><%= nutrition.recipe.totalNutrients.PROCNT.quantity %> <%=nutrition.recipe.totalNutrients.PROCNT.unit %></p>
       
-</div>
+        <p><strong>Sodium - </strong><%= nutrition.recipe.totalNutrients.NA.quantity %> <%=nutrition.recipe.totalNutrients.NA.unit %></p>
+        <p><strong>Calcium - </strong><%= nutrition.recipe.totalNutrients.CA.quantity %> <%=nutrition.recipe.totalNutrients.CA.unit %></p>
+        <p><strong>Magnesium - </strong><%= nutrition.recipe.totalNutrients.MG.quantity %> <%=nutrition.recipe.totalNutrients.MG.unit %></p>
+        <p><strong>Potassium - </strong><%= nutrition.recipe.totalNutrients.K.quantity %> <%=nutrition.recipe.totalNutrients.K.unit %></p>
+        <p><strong>Iron - </strong><%= nutrition.recipe.totalNutrients.FE.quantity %> <%=nutrition.recipe.totalNutrients.FE.unit %></p>
+        <p><strong>Vitamin A - </strong><%= nutrition.recipe.totalNutrients.VITA_RAE.quantity %> <%=nutrition.recipe.totalNutrients.VITA_RAE.unit %></p>
+       
+        <p><strong>Vitamin E - </strong><%= nutrition.recipe.totalNutrients.TOCPHA.quantity %> <%=nutrition.recipe.totalNutrients.TOCPHA.unit %></p>
+        <p><strong>Vitamin K - </strong><%= nutrition.recipe.totalNutrients.VITK1.quantity %> <%=nutrition.recipe.totalNutrients.VITK1.unit %></p>
+       
+        
+               <a href="<%= nutrition.recipe.url %>"><strong>Know about recipe</strong></a>
   </div>
+</div>
+                 </div>
+             <% }) %>  
+            </div>
+        </div>
+      
+<hr>
+        <br>
+        <div id="footer">
+        <div class="container"><br>
+            <h1>Explore the <strong>getNEWS</strong></h1><br>
+            <ul id="list">
+                <li class="set"><a href="#">News</a></li>
+                <li class="set"><a href="#">Weather</a></li>
+                <li class="set"><a href="#">Food</a></li>
+                
+            </ul>
+             <hr>
+        </div>
+        </div>
         
         
         
-        
-        
-        
-        
-        
-        
+ 
         
        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>
 </html>
+
+

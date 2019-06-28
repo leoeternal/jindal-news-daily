@@ -9,6 +9,51 @@
                 width:800px;
                 margin-left:250px;
             }
+            #footer{
+                background:grey;
+            }
+                #list{
+             list-style:none;
+             
+         }
+         .set{
+             margin:10px;
+             }
+             .set a{
+                 color:white;
+                 text-transform:uppercase;
+                 font-weight:200;
+             }
+           
+           
+            #photo{
+                background-image:url("https://images.unsplash.com/photo-1496412705862-e0088f16f791?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+                background-size:cover;
+            }
+           
+             @media screen and (max-width:1370px){
+               
+              #formmake{
+                 width:500px;
+                transform:translateX(-250px);
+              }
+            }
+             @media screen and (max-width:1000px){
+             
+              #formmake{
+                 width:500px;
+                transform:translateX(-250px);
+              }
+            }
+            
+             @media screen and (max-width:650px){
+              
+              #formmake{
+                 width:500px;
+                transform:translateX(-250px);
+              }
+            }
+            
         </style>
     </head>
     <body>
@@ -78,7 +123,20 @@
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav><br>
-<h2>Top Food Stories across the getNEWS </h2><br>
+
+
+<div id="photo" class="jumbotron jumbotron-fluid">
+    
+  <div class="container">
+     
+    <h1 id="day" class="display-4"></h1>
+    <p class="lead"><font color="white">Ditch the takeaway and cook up a storm with these simple versions of family favourites. No more containers to throw away – the <span id="days"> </span> is here!</font> </p>
+  </div>
+   </div>
+<br>
+
+<h1>Top Stories </h1>
+<br>
    <div class="row">
 <% getnews.body.articles.forEach(function(article)
 { %>
@@ -95,19 +153,164 @@
   
  <% }) %>
        </div>   
+        <br><hr>
+        <br>
+        <h1>Try today's top recipes</h1>
+        <br>
+        <div class="container">
+            <div class="row">
+                
+            <% getdish.body.hits.forEach(function(dish)
+        { %>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card" style="width: 14rem;">
+  <a href="<%= dish.recipe.shareAs %>"><img src="<%= dish.recipe.image %>" class="card-img-top" alt="..."></a>
+  <div class="card-body">
+    <h5 class="card-title"><a href="<%= dish.recipe.shareAs %>"><%=dish.recipe.label %></a></h5>
+    <br>
+    <p><%= dish.recipe.healthLabels[0] %></p>
+  </div>
+</div>
+            </div>
+           
+            <% }) %>
+        </div>
+        </div>
+        <br><hr>
+        
+        <h1>Get nutritional advices and recipes</h1>
+        <br>
+        <nav class="navbar">
+  <form class="form-inline" action="/food/item/nutrition" method="POST">
+    <input id="formmake" class="form-control mr-sm-2" type="search" name="nutrition" placeholder="Food item" aria-label="Search">
+    <button id="formbutton" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav><br>
+        <div class="container">
+            <div class="row">
+             <% getnutrition.body.hits.forEach(function(nutrition)
+             { %>
+                 <div class="col-lg-6 col-sm-6">
+                      <div class="card mb-3" style="max-width: 500px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="<%= nutrition.recipe.image %>" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%=nutrition.recipe.label %></h5>
+        <p><%= nutrition.recipe.healthLabels[nutrition.recipe.healthLabels.length-1] %></p>
+        <p><strong>Calories - </strong><%= nutrition.recipe.calories %></p>
+        <p><strong>Fat - </strong><%= nutrition.recipe.totalNutrients.FAT.quantity %></p>
+        <p><strong>Carbohydrate - </strong><%= nutrition.recipe.totalNutrients.CHOCDF.quantity %></p>
+        <a href="<%= nutrition.recipe.url %>"><strong>More..</strong></a>
+      </div>
+    </div>
+  </div>
+</div>
+                 </div>
+             <% }) %>  
+            </div>
+        </div>
+      
+<hr>
+        <br>
+        <div id="footer">
+        <div class="container"><br>
+            <h1>Explore the <strong>getNEWS</strong></h1><br>
+            <ul id="list">
+                <li class="set"><a href="#">News</a></li>
+                <li class="set"><a href="#">Weather</a></li>
+                <li class="set"><a href="#">Food</a></li>
+                
+            </ul>
+             <hr>
+        </div>
+        </div>
         
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        <script>
+            var day=String(new Date()).slice(0,3);
+            if(day=="Fri")
+            {
+          document.querySelector("#day").textContent=day+"day fakeaways";
+          document.querySelector("#day").style.color="white";
+            }
+            else if(day=="Mon")
+            {
+                document.querySelector("#day").textContent=day+"day fakeaways";
+          document.querySelector("#day").style.color="white";
+            }
+          else if(day=="Tue")
+            {
+                document.querySelector("#day").textContent=day+"sday fakeaways";
+          document.querySelector("#day").style.color="white";
+            }
+          else if(day=="Wed")
+            {
+                document.querySelector("#day").textContent=day+"nesday fakeaways";
+          document.querySelector("#day").style.color="white";
+            }
+          else if(day=="Thu")
+            {
+                document.querySelector("#day").textContent=day+"rsday fakeaways";
+          document.querySelector("#day").style.color="white";
+            }
+          else if(day=="Sat")
+            {
+                document.querySelector("#day").textContent=day+"urday fakeaways";
+          document.querySelector("#day").style.color="white";
+            }
+            else if(day=="Sun")
+            {
+                document.querySelector("#day").textContent=day+"day fakeaways";
+          document.querySelector("#day").style.color="white";
+            }
+            
+            
+             var dayss=String(new Date()).slice(0,3);
+            if(dayss=="Fri")
+            {
+          document.querySelector("#days").textContent=day+"day fakeaways";
+          document.querySelector("#days").style.color="white";
+            }
+            else if(dayss=="Mon")
+            {
+                document.querySelector("#days").textContent=day+"day fakeaways";
+          document.querySelector("#days").style.color="white";
+            }
+          else if(dayss=="Tue")
+            {
+                document.querySelector("#days").textContent=day+"sday fakeaways";
+          document.querySelector("#days").style.color="white";
+            }
+          else if(dayss=="Wed")
+            {
+                document.querySelector("#days").textContent=day+"nesday fakeaways";
+          document.querySelector("#days").style.color="white";
+            }
+          else if(dayss=="Thu")
+            {
+                document.querySelector("#days").textContent=day+"rsday fakeaways";
+          document.querySelector("#days").style.color="white";
+            }
+          else if(dayss=="Sat")
+            {
+                document.querySelector("#days").textContent=day+"urday fakeaways";
+          document.querySelector("#days").style.color="white";
+            }
+            else if(dayss=="Sun")
+            {
+                document.querySelector("#days").textContent=day+"day fakeaways";
+          document.querySelector("#days").style.color="white";
+            }
+          
+          
+          
+          
+        </script>
         
         
         
